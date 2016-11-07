@@ -52,6 +52,7 @@
 
 
 \documentclass[conference]{IEEEtran}
+\usepackage{multirow}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -116,6 +117,8 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+
   % \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
@@ -159,6 +162,7 @@
 
 % *** MATH PACKAGES ***
 %
+\usepackage{amsmath}
 %\usepackage{amsmath}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics.
