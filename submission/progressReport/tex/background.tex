@@ -1,1 +1,29 @@
 \section{Background}
+\subsection{Convolutional Neural Network}
+CNN is a biologically inspired variant of multi-layer perceptron containing small sub-regions of a visual field called receptive field [16]. 
+Unlike fully connected layered network, CNN has sparse connectivity and shared weights for the purpose
+of increasing computational efficiency and global representation power. CNN is now the most popular and effective selection for learning visual features in computer vision and machine learning fields. We obtain a feature map at layer h with input x pixel at coordinates (i, j) as the following equation:
+\begin{equation}
+h_{ij} = a((W \cdot x)_{ij}+b)
+\end{equation}
+
+, where weight matrix W and bias vector b is the filter of this feature map, a is activation function for non-linearities.
+    
+\subsection{Long Short-Term Memory}
+Recurrent neural network (RNN) is designed for processing sequential data by sharing weights across several time steps. 
+Due to its vanishing gradient problem that appears to long-sequence training data, its variations including LSTM [17] become popularized in practical applications. 
+LSTM consists of memory cells connected recurrently to each other, which is replacing hidden units of standard RNN. 
+End-to-end learning architecture with LSTM is the typical model when dealing with a sequence dataset. We update LSTM hidden state ht at every timestep t as follows:
+\begin{equation}
+\begin{split}
+i_t =& \sigma (W_i x_t + U_i h_{t-1} + b_i)\\
+f_t =& \sigma (W_f x_t + U_i h_{t-1} + b_f)\\
+c_t =& i_t \cdot tanh(W_c x_t + U_c h_{t-1} + b_c) + f_t \cdot c_{t-1}\\
+o_t =& \sigma (W_o x_t + U_o h_{t-1} + b_o)\\
+h_t =& o_t \cdot tanh(c_t)
+\end{split}
+\end{equation}
+
+, where xt is an input at time t and Wi, Wf , Wc, Wo, Ui, Uf , Uc, Uo, Vo are weight matrices, bi, bf , bc, bo are bias vectors, subscripts represent input(i), forget(f), cell(c) and output(o) variables [18, 19].
+\subsection{Optical Flow}
+\subsection{Key features}
