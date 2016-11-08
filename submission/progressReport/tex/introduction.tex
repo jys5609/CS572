@@ -2,13 +2,13 @@
 Lip-reading is a technique to understand speech by visually interpreting the movement of the lips, face and thought\footnote{Wiki}.
 This technique is not limited to deaf or hear-of-hearing people but is also used by people which have a normal hearing process.
 A phanomena known as the McGurk effect\cite{mcGurk} show this relation, where the interpretation of speech for the same sound is changed with the image.
-Just as people use lip-reading for speech recognition it is also seen to have its application in artificial, where a higher accuracy can be obtained by combining the acoustic and visual information \cite{Ngiam2011}.
-In artificial intelligent the combination of acoustic and visual information is know as audio-visual speech recognition (AVSR) and system where only the visual information is used in commonly known as automatic lip-readig (ALR) or visual speech recognition (VSR).
+Just as people use lip-reading for speech recognition it is also seen to have its application in artificial intelligence, where a higher accuracy can be obtained by combining the acoustic and visual information \cite{Ngiam2011}.
+In artificial intelligent the combination of acoustic and visual information is know as audio-visual speech recognition (AVSR) and system with only visual information is commonly known as automatic lip-readig (ALR) or visual speech recognition (VSR).
 ALR also have other promising applications, beside the combination with acoustic information, such as visual password, silent speech interface and forensic video analysis.
 
 The main challenge in ALR is duo to a large variation in visual factors both from the recording such as changes in illumination and camera angle\cite{Potamianos2003}, but also from factors that is person specific such as mouth shape an visual pronunciation. 
 
-In order to address each of these challenges, different experimental seups is proposed for ALR such as:
+In order to address each of these challenges, different experimental setup is proposed for ALR such as:
 Speaker dependent (SD) or speaker independent (SI), single-view or multi-view.
 SD is the simplest setting where the personal variation from the speaker is removed since data from one speaker is used both for the training and evaluation.
 In SI the variation from the speaker such as mouth shape and visual pronunciation is included where unseen speakers is used for the evaluation.
@@ -16,14 +16,15 @@ Single-view eliminate the change in camera angle where a multi-view setting incl
 
 Previous work in ALR can in generally be grouped in to two, one with a classical approach and a more recent approach where deep neural networks is used.
 
-In the classical approach the visual feature extraction is based on methods as
-component analysis, discrete wavelet transform, discrete cosine transform, active appearance model [5], local binary pattern [6], optical flow [7], Eigenlips [8], histograms of oriented gradients [9], internal motion histograms, motion boundary histograms and their mixed models [8, 10]. 
-For multi-viewpoint lip-reading [11] adopt a minimum cross-pose variance analysis technique.\footnote{Taken from Multi-View Automatic}
+In the classical approach methods from computer vision is used for the visual feature extraction.
+These methods involve methods such as optical flow\cite{Shaikh2010} or key feature extraction\cite{Li2008}.
+%In the classical approach the visual feature extraction is based on methods as
+%component analysis, discrete wavelet transform, discrete cosine transform, active appearance model [5], local binary pattern [6], optical flow [7], Eigenlips [8], histograms of oriented gradients [9], internal motion histograms, motion boundary histograms and their mixed models [8, 10]. 
+%For multi-viewpoint lip-reading [11] adopt a minimum cross-pose variance analysis technique.\footnote{Taken from Multi-View Automatic}
 
 Better performing systems is later obtained by the use of neural networks, where neural networks both have its application for both the feature extraction and the temporal correlation.
-In \cite{Ngiam2011} a deep autoencoder for the feature extraction (Are there any temporal model in this architecture?).
-A long short-term memory (LSTM) is used in \cite{Wand2016} to make a temporal time correlation of the features.
-A state-of-the art performance is then obtained in \cite{Lee}, where a convolutional neural network (CNN) is used for the feature extraction together with a LSTM for the temporal correlation.
+In \cite{Ngiam2011} a deep autoencoder is used for the feature extraction and a long short-term memory (LSTM) is used in \cite{Wand2016} to make a temporal time correlation of the features.
+In \cite{Lee} the combination of a convolutional neural network with a LSTM is presented and is the current state-of-the-art architecture.
 
 In this work we propose a combined solution between the classical approach and the neural network approach, by using techniques from the classical approach for the feature extraction in combination with a CNN and LSTM.
 We limit our scope to focus on speaker independent and multi-view setting, where we use the OuluVS2 database\cite{Anina2015} to evaluate our design, in relation to the error rate of word or phrase classification.
