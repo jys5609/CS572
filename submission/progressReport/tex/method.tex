@@ -14,7 +14,7 @@ These features is then passed on to the \textit{temporal model} where they are c
 The time correlated features is then inputted to the classifier which is outputting the different class probabilities.
 For each of the three main components, different implementations is of interest where each of these is listed in figure \ref{fig:highLevelArchitecture}. 
 Each of the different methods is presented in the following sections.
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{fig/highLevelArchitecture.pdf}
     \caption{High-level architecture used}
@@ -61,6 +61,13 @@ An illustration of this can be seen in figure \ref{fig:keyFeature}.
     \caption{Key Feature}
     \label{fig:keyFeature}
 \end{figure}
+
+\subsection{Temporal model}
+Two different temporal models is used, which is \textit{LSTM} and \textit{bidirectional-LSTM}.
+For both of these models a two layered design is used, where the size of each layer is here varying with the number of output features from the visual model.
+
+\subsection{Classifier}
+What classifiers are we expecting to use?????
 
 %\subsection{Proposed Architecture}
 %We propose to use several different model for both the visual and temporal model.
