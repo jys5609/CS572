@@ -1,5 +1,5 @@
 \section{Introduction}
-Lip-reading is a technique to understand speech by visually interpreting the movement of the lips, face and thought\footnote{Wiki}.
+Lip-reading is a technique to understand speech by visually interpreting the movement of the lips, face and thought.
 This technique is not limited to deaf or hear-of-hearing people but is also used by people which have a normal hearing process.
 A phanomena known as the McGurk effect\cite{mcGurk} show this relation, where the interpretation of speech for the same sound is changed with the image.
 Just as people use lip-reading for speech recognition it is also seen to have its application in artificial intelligence, where a higher accuracy can be obtained by combining the acoustic and visual information \cite{Ngiam2011}.
@@ -9,10 +9,10 @@ ALR also have other promising applications, beside the combination with acoustic
 The main challenge in ALR is duo to a large variation in visual factors both from the recording such as changes in illumination and camera angle\cite{Potamianos2003}, but also from factors that is person specific such as mouth shape an visual pronunciation. 
 
 In order to address each of these challenges, different experimental setup is proposed for ALR such as:
-Speaker dependent (SD) or speaker independent (SI), single-view or multi-view.
+Speaker dependent (SD) or speaker independent (SI), single-view, cross-view or multi-view.
 SD is the simplest setting where the personal variation from the speaker is removed since data from one speaker is used both for the training and evaluation.
 In SI the variation from the speaker such as mouth shape and visual pronunciation is included where unseen speakers is used for the evaluation.
-Single-view eliminate the change in camera angle where a multi-view setting include this dependency.
+Single-view focus one the usage with an single camera angle, cross-view use one camera angle for the training and another for the testing and multi-view is including multiple camera angles for both training and testing.
 
 Previous work in ALR can in generally be grouped in to two, one with a classical approach and a more recent approach where deep neural networks is used.
 
@@ -27,5 +27,5 @@ In \cite{Ngiam2011} a deep autoencoder is used for the feature extraction and a 
 In \cite{Lee} the combination of a convolutional neural network with a LSTM is presented and is the current state-of-the-art architecture.
 
 In this work we propose a combined solution between the classical approach and the neural network approach, by using techniques from the classical approach for the feature extraction in combination with a CNN and LSTM.
-We limit our scope to focus on speaker independent and multi-view setting, where we use the OuluVS2 database\cite{Anina2015} to evaluate our design, in relation to the error rate of word or phrase classification.
+We limit our scope to focus on speaker independent and with single-view, cross-view and multi-view setting, where we use the OuluVS2 database\cite{Anina2015} to evaluate our design, in relation to the error rate of word or phrase classification.
 This task is related to the challenges given at the ACCV 2016 workshop, multi-view lip-reading/audio-visual challenge\footnote{http://ouluvs2.cse.oulu.fi/ACCVE.html} (MLAC 2016).
