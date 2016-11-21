@@ -24,9 +24,9 @@
     \begin{columns}[T]
     \column{.5\textwidth}
     \begin{align*}
-        \dot{x} =& f(\bar{x},\bar{y},\bar{t})\\
-        \dot{u} =& y(\bar{x},\dot{t})\\
-        \dot{\bar{x}} =& f(\bar{x}^*,t)
+        \dot{x} =& f(\bar{x},\bar{y},t)\\
+        \dot{u} =& y(\bar{x},t)\\
+        \dot{x} =& f(\bar{x}^*,t)
     \end{align*}
     *equality point
     \column{.5\textwidth}
@@ -57,52 +57,56 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{pendulum (1)}
+\begin{frame}{Van der Pol Oscilator}
     \begin{columns}[T]
     \column{.6\textwidth}
-    Van der Pol Oscilator
     \begin{align*}
         \dot{x}_1 =& x_2\\
         \dot{x}_2 =& -x_2+(1-x^2)-x_2
     \end{align*}
+    $x_1=0,x_2=0$
     %
     \vspace{1cm}
-    $$\forall R\supset 0,\; \exists r>0,\; ||x(0)||<\gamma \Rightarrow \forall t>0,\;||x(t)||<R$$
     \column{.4\textwidth}
         \vspace{-1cm}
         \includegraphics[width=\textwidth]{fig/limitCircle.png}   
     \end{columns}
 \end{frame}
 
-\begin{frame}{pendulum (2)}
+\begin{frame}{Lyapunov Stability}
     \begin{columns}[T]
     \column{.6\textwidth}
-    Lyapunov Stability\\
-    $$\Rightarrow x(t)\rightarrow 0 \; as\; t\rightarrow \infty$$
     \hspace{1cm}(1) Marginally stable\\
+    $\forall R\supset 0,\; \exists r>0,\; ||x(0)||<\gamma \Rightarrow \forall t>0,\;||x(t)||<R$\\
     \hspace{1cm}(2) Asymptotically stable\\
+    $\Rightarrow x(t)\rightarrow 0 \; as\; t\rightarrow \infty$\\
     \hspace{1cm}(3) Unstable\\
     \hspace{1cm}(*) Exponentially stability\\
+    $||x(0)|| \in B_r \; s,t \; \forall t>0, \; ||x(t)||\leq x||x(0)||e^{-\lambda t}$
     \column{.4\textwidth}
         \includegraphics[width=\textwidth]{fig/lyapunovStability.png}   
     \end{columns}
 \end{frame}
 
-\begin{frame}{$V(x)$ Scalar, smooth}
+\begin{frame}{Lyapunov Function}
+$V(x)$ Scalar, smooth\\
 $$\dot{v} = \frac{d}{dt}v(\bar{x}),\; v^T = f(x)$$
 $$v(\bar{x})\rightarrow {\infty}^+ \; as\; ||\bar{x}|| \rightarrow {\infty}^+$$
 $$\& \dot{v}(\bar{x}) \leq 0 \; for \; \forall \bar(x)$$
 Let $R$ be the set where $\dot{x}=x$ then any of the system tends towards the largest invariant set within $R$ 
 \end{frame}
 
-\begin{frame}{Invariant Set}
+\begin{frame}{Convergence Analysis}
+Invariant Set\\
+\begin{center}
 Starts there, stay there\\
+\end{center}
 Let
 $$v=\frac{1}{2}\dot{x}^2+\int_0^x C(x)dx$$
 \vspace{-1cm}
 \begin{align*}
-    &|x| \rightarrow \infty \Rightarrow \infty\\
-    &|x| \rightarrow \infty \Rightarrow \infty\\
+    &|x| \rightarrow \infty \Rightarrow v \rightarrow \infty\\
+    &|x| \rightarrow \infty \Rightarrow v \rightarrow \infty\\
 \end{align*}
 
 \begin{align*}
@@ -112,7 +116,7 @@ $$v=\frac{1}{2}\dot{x}^2+\int_0^x C(x)dx$$
 \end{frame}
 
 %Invariant set
-\begin{frame}{ex}
+\begin{frame}{Convergence Analysis (2)}
     \begin{columns}[T]
     \column{.5\textwidth}
         $\ddot{x}+b(\dot{x})+C(x)=0$\\
@@ -124,7 +128,7 @@ $$v=\frac{1}{2}\dot{x}^2+\int_0^x C(x)dx$$
     \end{columns}
 \end{frame}
 
-\begin{frame}{ex (2)}
+\begin{frame}{Convergence Analysis (3)}
     $\dot{v}=\dot{x}\ddot{x} + \frac{d}{dt}f^x_0 C(x)dx \dot{x} = \dot{x}(-b(\dot{x}))=\dot{x}b(\dot{x})<0$\\
     $v=0 \Rightarrow \dot{x}=0$\\
     $\bar{\ddot{x}}-C(x) \neq 0\; unless\; 0$\\
@@ -162,7 +166,7 @@ $$v=\frac{1}{2}\dot{x}^2+\int_0^x C(x)dx$$
         =& -\dot{\bar{q}}^\tau k_p \bar{q} \leq 0
     \end{align*}
     $$\dot{\bar{g}}=0$$
-    $$H\ddot{g}=\tau-q=-K_q=-K_p\bar{q}=0, \; \tilde{q}=0$$
+    $$H\ddot{g}=\tau-q=-K_p\bar{q}=0, \; \tilde{q}=0$$
 \end{frame}
 
 \end{document}
