@@ -1,0 +1,109 @@
+\section{Method}
+\label{sec:method}
+
+In this section our approach to solve the Automatic Lip-reading is presented.
+The high-level architecture is first introduced, where the main components and their functions is described.
+The particular architectures which we like to evaluate is then presented.
+
+\subsection{High-level Architecture}
+In figure \ref{fig:highLevelArchitecture} an illustration of the high-level architecture can be seen with the three main components; \textit{Visual model}, \textit{temporal model} and classifier.
+In the figure the flow of information can also be seen, from the sequence of images inputted to the architecture and to the outputted class probabilities. 
+%For this project the \textit{input} data consist of a sequence of images, where the dataset presented in section \ref{sec:dataset} is used the extracted region-of-interest.
+The \textit{visual model} is used to extract features from the input image.
+These features is then passed on to the \textit{temporal model} where they are correlated in time.
+The time correlated features is then inputted to the classifier which is outputting the different class probabilities.
+For each of the three main components, different implementations is of interest where each of these is listed in figure \ref{fig:highLevelArchitecture}. 
+Each of the different methods is presented in the following sections.
+We would here evaluate the performance where a single method from each component is used in combination, which give a total of 16 different architectures.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{fig/highLevelArchitecture.pdf}
+    \caption{High-level architecture used in this work, with the three main component and with the different method used for each of them.}
+    \label{fig:highLevelArchitecture}
+\end{figure}
+
+\subsection{Visual Model}
+For the feature extraction 4 different methods is of interest, where two of these make use of neural network's and the other two is computer vision related.
+\paragraph{CNN-original}
+This visual model is corresponding to the one used in the state-of-the-art model, presented in \cite{Lee}.
+An illustration of the model can be seen in figure \ref{fig:cnnOriginal}.
+It make use of two convolutional layers with 16 to 256 filters in the shape of (3,3).
+Each convolutional layer has a successive max-pooling layer in the shape of (2,2).
+Lastly a fully connected layer with a dimension of 8 to 64 outputs is used.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{fig/cnnOriginal.jpg}
+    \caption{CNN-original\cite{Lee}}
+    \label{fig:cnnOriginal}
+\end{figure}
+
+\paragraph{Alex-Net}
+A popular neural network architecture for image recognition is an Alex-net\cite{Krizhevsky2012}.
+This architecture is a deep CNN as depicted in figure \ref{fig:alexNet}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{fig/alexNet.jpg}
+    \caption{Alex-net\cite{Krizhevsky2012}}
+    \label{fig:alexNet}
+\end{figure}
+
+\paragraph{Optical flow}
+For the calculation of optical flow we expect the differential method commonly denoted as the Lucas-Kanade method\cite{Lucas1981}.
+The method have the assumption of the flow begin essentially constant in a local neighbourhood.
+
+\paragraph{Key features}
+For the key feature extraction a method similar to the one presented in \cite{Li2008} is used.
+The mouth is divided in to four parts, lower and upper part of the upper lip and lower and upper part of the lower lip.
+A vertical grid is then made, where the coordinates of the intersection points is used.
+An illustration of this can be seen in figure \ref{fig:keyFeature}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{fig/keyFeature.jpg}
+    \caption{Key Feature\cite{Li2008}}
+    \label{fig:keyFeature}
+\end{figure}
+
+\subsection{Temporal model}
+Two different temporal models is used, which is \textit{LSTM} and \textit{bidirectional-LSTM}.
+For both of these models a two layered design is used, where the size of each layer is here varying with the number of output features from the visual model.
+
+\subsection{Classifier}
+There are many kinds of classifier to determine the output. In our approach, we will apply two different classifier, namely a support vector machine (SVM) and softmax function. SVM classify the data points with some vectors that can divide whether correct or not. Softmax function normalizes the probabilities and reconstruct it with distinct difference.
+
+%\subsection{Proposed Architecture}
+%We propose to use several different model for both the visual and temporal model.
+%We will here implement and evaluate each of these models to see how they perform and compare this to the current state-of-the-art architecture.
+%We will here use the visual and temporal models listed in table \ref{tab:visualTemporalModel}.
+
+%\begin{table}
+%\centering
+%\begin{tabular}{l|l}
+%Visual Model & Temporal Model\\
+%\hline
+%CNN-original & LSTM\\
+%Alex-net & B-LSTM\\
+%Optical Flow & \\
+%Key Features &
+%\end{tabular}
+%\caption{Table with the different Visual and Temporal models used}
+%\label{tab:visualTemporalModel}
+%\end{table}
+
+%From these visual and temporal models a total of 10 different architectures can be obtained by combining a single visual model with a single temporal model.
+%These 10 single model architectures is all listed in table \ref{tab:singleModelArc}.
+%Beside these single model architecture further can be obtained by combining multiple visual models with a single temporal model.
+%Before combining multiple visual models, we first propose to evaluate the performance of the single model architectures.
+%
+%
+%In our approach we will first obtain results from the 10 basic models and then 
+%
+%
+%Temporal Model
+%LSTM
+%B-LSTM
+%
+%
+%Alex-net + LSTM
+%CNN-original + Bidirectional LSTM
+%Optical flow + LSTM
+%Key features + LSTM

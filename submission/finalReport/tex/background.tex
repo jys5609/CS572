@@ -1,0 +1,38 @@
+\section{Background}
+\subsection{Convolutional Neural Network}
+
+Convolutional neural networks (CNN) is usually used in many fields of computer vision. CNN is classically applied to classification and detection task.
+CNN is inspired by multi-layer perceptron containing small sub-regions of a visual field called receptive field [16]. 
+Unlike fully connected layered network, CNN has sparse connectivity and shared weights for the purpose
+of increasing computational efficiency and global representation power. CNN is now the most popular and effective selection for learning visual features in computer vision and machine learning fields. We obtain a feature map at layer h with input x pixel at coordinates (i, j) as the following equation:
+\begin{equation}
+h_{ij} = a((W \cdot x)_{ij}+b)
+\end{equation}
+
+, where weight matrix W and bias vector b is the filter of this feature map, a is activation function for non-linearities.
+    
+\subsection{Long Short-Term Memory}
+
+Among numerous methodologies, recurrent neural network (RNN) and its variants are now common in handling sequential data with their promise of performance and ease of use. The fundamental neural network does not consider the dependency of all inputs and outputs. However, in various tasks, there exist dependency in inputs and outputs, such as sentence analysis. RNN recurrently use the previous computation result to compute the current output. Long-short term memory (LSTM) \cite{hochreiter1997long}, one of the most popular RNN variants that is able to capture long-range dependencies, is commonly adopted. LSTM is RNN with gates, which is proposed to prevent the vanishing gradient problem, becoming more effective in dealing with long sequences.
+
+The basic structure of LSTM unit consists of a cell state with three essential gates: input gate, forget gate and output gate. The cell controls the information storing for a long period via gates. Given an input vector $\mathbf x_t$ at time step $t$, the formal equation for updating gates, output and cell state are defined as follows:
+$$\mathbf i_t=\sigma\left({\mathbf x}_{t}{\mathbf U}^{i} + {\mathbf 
+	h}_{t-1}{\mathbf W}^{i}\right)$$
+$$\mathbf f_t=\sigma\left({\mathbf x}_{t}{\mathbf U}^{f} + {\mathbf 
+	h}_{t-1}{\mathbf W}^{f}\right)$$
+$$\mathbf o_t=\sigma\left({\mathbf x}_{t}{\mathbf U}^{o} + {\mathbf 
+	h}_{t-1}{\mathbf W}^{o}\right)$$
+$$\mathbf c_t=\mathbf c_{t-1}\circ \mathbf f_t + \mathbf i_t\circ 
+\tanh\left({\mathbf x}_{t}{\mathbf U}^{c} + {\mathbf h}_{t-1}{\mathbf 
+	W}^{c}\right)$$
+$$\mathbf h_t=\tanh\left(c_t\right)\circ \mathbf o_t$$
+
+where $\mathbf{W}^i, \mathbf{W}^f, \mathbf{W}^o, \mathbf{W}^c \in \mathbb{R}^{N \times N}$, $\mathbf{U}^i, \mathbf{U}^f, \mathbf{U}^o, \mathbf{U}^c \in \mathbb{R}^{N \times N}$ are weight matrices, $\mathbf h_t$ is output vector and $i, f$ and $o$ represent input ($i$), forget ($f$) and output ($o$) gates.
+
+We are planning to apply the bi-directional LSTM, which considers the both directional(forward and backward) sequence of data. There are some reseach about outperforming result of bi-directional LSTM(\cite{BiLSTM}). 
+
+
+\subsection{Optical Flow}
+
+Optical flow estimation is one of the key problems in the computer vision. In the previous approaches, Horn and Schunk suggest the original optical flow(\cite{Horn1993}). After the original optical flow, many improvements are suggested as variational model optical flow. In our approach, we are planning to apply the optical flow to feature extraction. Optical flow represents the characteristic and it can be used as a featuer of the specific part in the image.
+
