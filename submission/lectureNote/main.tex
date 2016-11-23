@@ -21,17 +21,39 @@
 \frame{\titlepage}
 
 \begin{frame}{Controller Stability}
+    Controller stability deals with the property of keeping the system state in a specific region or close to it, throughout operation.\\
+    \vspace{0.5cm}
     \begin{columns}[T]
     \column{.5\textwidth}
-    \begin{align*}
-        \dot{x} =& f(\bar{x},\bar{y},t)\\
-        \dot{u} =& y(\bar{x},t)\\
-        \dot{x} =& f(\bar{x}^*,t)
-    \end{align*}
-    *equality point
+        \begin{center}
+            {\Large\color[rgb]{0.2,0.2,0.7} Content}
+        \end{center}
+        \begin{itemize}
+            \item Pendulum
+            \item Van Der Pol Oscillator 
+            \item Lyapunov Stability
+            \item Real robot 
+        \end{itemize}
     \column{.5\textwidth}
+        \begin{center}
+            \vspace{0.5cm}
+            \includegraphics[width=\textwidth]{fig/stable.png}   
+        \end{center}
     \end{columns}
 \end{frame}
+
+%\begin{frame}{Controller Stability}
+%    \begin{columns}[T]
+%    \column{.5\textwidth}
+%    \begin{align*}
+%        \dot{x} =& f(\bar{x},\bar{y},t)\\
+%        \dot{u} =& y(\bar{x},t)\\
+%        \dot{x} =& f(\bar{x}^*,t)
+%    \end{align*}
+%    *equality point
+%    \column{.5\textwidth}
+%    \end{columns}
+%\end{frame}
 
 \begin{frame}{pendulum}
     \begin{columns}[T]
@@ -76,13 +98,22 @@
 \begin{frame}{Lyapunov Stability}
     \begin{columns}[T]
     \column{.6\textwidth}
-    \hspace{1cm}(1) Marginally stable\\
-    $\forall R\supset 0,\; \exists r>0,\; ||x(0)||<\gamma \Rightarrow \forall t>0,\;||x(t)||<R$\\
-    \hspace{1cm}(2) Asymptotically stable\\
+    (1) Marginally stable\\
+    \vspace{-0.5cm}\begin{center}
+    $\forall R\supset 0,\; \exists r>0$,\\
+    $\; ||x(0)||<\gamma \Rightarrow \forall t>0,\;||x(t)||<R$\\
+    \end{center}
+    (2) Asymptotically stable\\
+    \vspace{-0.5cm}\begin{center}
     $\Rightarrow x(t)\rightarrow 0 \; as\; t\rightarrow \infty$\\
-    \hspace{1cm}(3) Unstable\\
-    \hspace{1cm}(*) Exponentially stability\\
-    $||x(0)|| \in B_r \; s,t \; \forall t>0, \; ||x(t)||\leq x||x(0)||e^{-\lambda t}$
+    \end{center}
+    (3) Unstable\\
+    \vspace{0.5cm}
+    (*) Exponentially stability\\
+    \vspace{-0.5cm}\begin{center}
+    $||x(0)|| \in B_r \; s,t \; \forall t>0$,\\
+    $||x(t)||\leq x||x(0)||e^{-\lambda t}$
+    \end{center}
     \column{.4\textwidth}
         \includegraphics[width=\textwidth]{fig/lyapunovStability.png}   
     \end{columns}
@@ -116,19 +147,10 @@ $$v=\frac{1}{2}\dot{x}^2+\int_0^x C(x)dx$$
 \end{frame}
 
 %Invariant set
-\begin{frame}{Convergence Analysis (2)}
-    \begin{columns}[T]
-    \column{.5\textwidth}
-        $\ddot{x}+b(\dot{x})+C(x)=0$\\
-        \vspace{1cm}
-        \includegraphics[width=\textwidth]{fig/bx.png}   
-    \column{.5\textwidth}
-        \vspace{1cm}
-        \includegraphics[width=0.9\textwidth]{fig/cx.png}   
-    \end{columns}
-\end{frame}
+\begin{frame}{Convergence Analysis}
+    $\ddot{x}+b(\dot{x})+C(x)=0$\\
+    \includegraphics[width=\textwidth]{fig/bxcx.png}   
 
-\begin{frame}{Convergence Analysis (3)}
     $\dot{v}=\dot{x}\ddot{x} + \frac{d}{dt}f^x_0 C(x)dx \dot{x} = \dot{x}(-b(\dot{x}))=\dot{x}b(\dot{x})<0$\\
     $v=0 \Rightarrow \dot{x}=0$\\
     $\bar{\ddot{x}}-C(x) \neq 0\; unless\; 0$\\
