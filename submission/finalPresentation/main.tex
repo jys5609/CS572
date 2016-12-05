@@ -1,15 +1,20 @@
-\documentclass{beamer}
+\documentclass[xcolor=table]{beamer}
 \usepackage{amsmath}
 %\usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{pdflscape}
 \usepackage{float}
 \usepackage{multirow}
+\usepackage{subfig}
+\usepackage{multimedia}
 
 \usetheme{Dresden}
 
 %\setbeamertemplate{itemize body begin}{\tiny}
 %\setbeamertemplate{itemize items}[triangle]
+%\definecolor{Gray}{gray}{0.85}
+%\newcolumntype{header}{>{\columncolor{Gray}}c}
+\input{table.sty}
 
 
 \begin{document}
@@ -164,7 +169,7 @@
         \begin{itemize}
         \item Same view used for training and testing
         \end{itemize}
-        \item \alert{Cross-view}
+        \item Cross-view
         \begin{itemize}
         \item One view used for training, other used for testing
         \end{itemize}
@@ -231,10 +236,15 @@
 
 \begin{frame}{Our Approach}
     \begin{itemize}
-        \item Try different visual and temporal models
+        \item Experiment with different architecture
+        \begin{itemize}
+            \item 3 visual models 
+            \item 2 temporal models
+            \item 1 Classifier
+        \end{itemize}
     \end{itemize}
     \begin{center}
-    \includegraphics[width=0.8\textwidth]{fig/highLevelArchitecture.pdf}   
+    \includegraphics[width=0.8\textwidth]{fig/ourApproach.pdf}   
     \end{center}
 \end{frame}
 
@@ -255,43 +265,244 @@
         \end{figure}
     \end{itemize}
     \end{columns}
+    %
     \begin{columns}[T]
-    \column{.5\textwidth}
+    \column{\textwidth}
     \begin{itemize}
-        \item Key features 
-        \begin{figure}
-        \includegraphics[width=.5\textwidth]{fig/keyFeature.jpg}   
-        \end{figure}
+        \item Optical Flow 
+        \begin{columns}[T]
+            \column{.25\textwidth}
+            \begin{figure}
+            \includegraphics[width=\textwidth]{fig/opti0.jpeg}   
+            \end{figure}
+            \column{.25\textwidth}
+            \begin{figure}
+            \includegraphics[width=\textwidth]{fig/opti1.jpeg}   
+            \end{figure}
+            \column{.25\textwidth}
+            \begin{figure}
+            \includegraphics[width=\textwidth]{fig/opti.jpeg}   
+            \end{figure}
+        \end{columns}
     \end{itemize}
-    \column{.5\textwidth}
-    \begin{itemize}
-        \item Optical flow
-        %\begin{figure}
-        %\includegraphics[width=.9\textwidth]{fig/alexNet.jpg}   
-        %\end{figure}
-    \end{itemize}
+    \column{.0\textwidth}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Temporal Models}
     \begin{itemize}
         \item Long Short-Term Memory 
-        %\begin{figure}
-        %\includegraphics[width=.9\textwidth]{fig/cnnOriginal.jpg}   
-        %\end{figure}
+        \begin{figure}
+            \includegraphics[width=.3\textwidth]{fig/lstm.png}   
+        \end{figure}
     \end{itemize}
     \begin{itemize}
         \item Bidirectional Long Short-Term memory 
-        %\begin{figure}
-        %\includegraphics[width=.9\textwidth]{fig/alexNet.jpg}   
-        %\end{figure}
+        \begin{figure}
+            \includegraphics[width=.4\textwidth]{fig/biLstm.png}   
+        \end{figure}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{Architectures}
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item 5 architecture is evaluated
+    \end{itemize}
+    \column{0.5\textwidth}\vspace{-0.7cm}
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiCnnBiLstm.pdf}
+    \end{figure}\pause
+    \end{columns}
+    %
+    \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiAlexLstm.pdf}   
+    \end{figure}\vspace{-1.2cm}\pause
+    \column{0.5\textwidth}
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiAlexBiLstm.pdf}   
+    \end{figure}\pause
+    \end{columns}
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiOptiLstm.pdf}   
+    \end{figure}\vspace{-.5cm}\pause
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiOptiBiLstm.pdf}   
+    \end{figure}
 \end{frame}
 
+\begin{frame}{Results Single-View}
+    \vspace{-1.0cm}
+    \makebox[\linewidth][r]{%
+    \begin{minipage}[t]{0.8\textwidth}
+    \begin{figure}
+        \begin{overprint}[\textwidth]
+            \onslide<1>\hfill\includegraphics[height=1.5cm]{fig/archiBase.pdf}   
+            \onslide<2>\hfill\includegraphics[height=1.5cm]{fig/archiCnnBiLstm.pdf}   
+            \onslide<3>\hfill\includegraphics[height=1.5cm]{fig/archiAlexLstm.pdf}   
+            \onslide<4>\hfill\includegraphics[height=1.5cm]{fig/archiAlexBiLstm.pdf}   
+            \onslide<5>\hfill\includegraphics[height=1.5cm]{fig/archiOptiLstm.pdf}   
+            \onslide<6>\hfill\includegraphics[height=1.5cm]{fig/archiOptiBiLstm.pdf}   
+        \end{overprint}
+    \end{figure}
+    \vspace{-.1cm}
+    \end{minipage}%
+    }
+    %
+    \makebox[\linewidth][c]{%
+    \begin{minipage}{1.1\textwidth}
+    \begin{center}
+    \begin{tabular}{cc|ccccccc}
+        \rowcolor{Header}
+        \multicolumn{2}{c|}{Architecture} &%
+        \multicolumn{6}{c}{View} &\\ 
+        \rowcolor{Header}
+        Visual  & Temporal %
+        & 0& 30 & 45 & 60 & 90 & Avg & Multi\\\hline\hline
+        %
+        %
+        CNN-base & LSTM % 
+        &81.1 &80.0 &76.9 &69.2 &82.2 &77.9 & 80.0\pause \\\hline
+        %
+        \rowcolor{Even}
+        CNN-base & biLSTM % 
+        &81.1 &80.0 & 83.9\imp & 75.8\imp & 82.5\imp & 80.66\imp  & 81.1\imp\pause \\\hline
+        \rowcolor{AlexNet}
+        Alex-net & LSTM % 
+        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
+        \rowcolor{AlexNet}
+        Alex-net & biLSTM % 
+        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
+        \rowcolor{Opti}
+        Opti & LSTM % 
+        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
+        \rowcolor{Opti}
+        Opti & biLSTM % 
+        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\\\hline
+    \end{tabular}
+    \end{center}
+    \end{minipage}%
+    }
+\end{frame}
+
+\begin{frame}{Architecture Multi-view}
+    \begin{itemize}
+        \item Dublication of sigle-view visual model
+        \item Feature merge before temporal model
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{fig/archiMultiView.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Result Multi-View}
+    \begin{center}
+    \begin{tabular}{cc|c}
+        \rowcolor{Header}
+        \multicolumn{2}{c|}{Architecture} &\\
+        \rowcolor{Header}
+        Visual  & Temporal & Multi-View \\\hline\hline
+        %
+        %
+        CNN-base & LSTM % 
+        & 80.0\\
+        \rowcolor{Even}
+        CNN-base & biLSTM % 
+        & 81.1\\
+        \rowcolor{AlexNet}
+        Alex-net & LSTM % 
+        & 80.0\\
+        \rowcolor{AlexNet}
+        Alex-net & biLSTM % 
+        & 80.0\\
+        \rowcolor{Opti}
+        Opti & LSTM % 
+        & 80.0\\
+        \rowcolor{Opti}
+        Opti & biLSTM % 
+        & 80.0\\
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Augmenting Data}
+    \begin{itemize}
+        \item Improving performance by increasing the traning data
+        \item Images from camera angles next to each other is similar  
+    \end{itemize}\pause
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{fig/augmenting.pdf}
+    \end{figure}\pause
+    %
+    \begin{center}
+    \begin{tabular}{cc|cc}
+        \rowcolor{Header}
+        \multicolumn{2}{c|}{Architecture} &%
+        &\\
+        \rowcolor{Header}
+        Visual  & Temporal %
+        & Non-augmented & Augmented\\\hline\hline
+        %
+        %
+        \multicolumn{2}{c|}{Baseline}%
+        & 80.0 & 82.1\imp\\\hline
+        %
+        \rowcolor{Even}
+        CNN-base & biLSTM % 
+        & 81.1 & 81.9\imp\\\hline
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+%\begin{frame}{Result Augmenting Data}
+%\begin{center}
+%\begin{tabular}{cc|cc}
+%    \rowcolor{Header}
+%    \multicolumn{2}{c|}{Architecture} &%
+%    &\\
+%    \rowcolor{Header}
+%    Visual  & Temporal %
+%    & Multi& Augmented\\\hline\hline
+%    %
+%    %
+%    \multicolumn{2}{c|}{Baseline}%
+%    & 80.0 & 82.1\imp\\\hline
+%    %
+%    \rowcolor{Even}
+%    CNN-base & biLSTM % 
+%    & 81.1 & 81.9\imp\\\hline
+%\end{tabular}
+%\end{center}
+%\end{frame}
+
 \begin{frame}{Conclusion}
+    \begin{itemize}
+        \item 5 different Auto lip-reading architectures is evaluated\pause
+        \item 2 experimental setup: \textit{single-view} and \textit{multi-view}\pause
+        \item Best prformance: CNN combined with a bidirectional-LSTM
+        \begin{center}
+        \begin{tabular}{c|cc}
+            \rowcolor{Header}
+            Architecture & Single-view Avg & Multi-view\\\hline
+            %
+            Baseline & 77.9 & 80.0\\
+            CNN+biLSTM & 80.7 & 81.1\\
+        \end{tabular}
+        \end{center}\pause
+        \item Adjacent views can be used for augmenting training data.\pause
+        \begin{center}
+        \begin{tabular}{c|cc}
+            \rowcolor{Header}
+            Architecture & Multi-view & Augmented\\\hline
+            %
+            Baseline & 80.0 & 82.1\\
+            CNN+biLSTM & 81.1 & 81.9\\
+        \end{tabular}
+        \end{center}
+    \end{itemize}
 \end{frame}
 
 \bibliographystyle{plain}

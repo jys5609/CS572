@@ -1,0 +1,28 @@
+\definecolor{Header}{rgb}{0.2,0.2,0.6}
+\definecolor{AlexNet}{gray}{0.60}
+\definecolor{Opti}{gray}{0.90}
+\definecolor{Even}{gray}{0.90}
+\definecolor{Odd}{gray}{0.60}
+\definecolor{Imp}{rgb}{0,.85,0}
+
+% Coloring cell with improvement
+\newcommand{\imp}{\cellcolor{Imp}}
+
+\newcommand{\tabMultiRow}[4]{%
+    \rowcolor{#2}
+    & LSTM & %
+    #3\\
+    \rowcolor{#2}
+    \multirow{-2}{*}{#1}%
+    & biLSTM &%
+    %
+    #4
+}
+%\newcommand{\tabRow}[11]{%
+%    \multirow{2}{*}{#1}%
+%    & LSTM & %
+%    #2\\
+%    & #2& #3& #4& #5& #6&\\
+%    & biLSTM &%
+%    & #7& #8& #9& #10& #11&\\\hline%
+%}
