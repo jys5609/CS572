@@ -82,16 +82,22 @@
 \begin{frame}{Van der Pol Oscilator}
     \begin{columns}[T]
     \column{.6\textwidth}
+    van dal pol equation
+    \begin{align*}
+    & x+\mu(x^2-1)x+x=0
+    \end{align*}
+    transformation $x_2=\dot{x_1}$ leads to
     \begin{align*}
         \dot{x}_1 =& x_2\\
-        \dot{x}_2 =& -x_2+(1-x^2)-x_2
+        \dot{x}_2 =& -x_1+\mu(1-x^2)-x_2
     \end{align*}
-    $x_1=0,x_2=0$
+    initial set = ${(x_1=\pm0.5,x_2=0),(x_1=\pm3,x_2=0)}$
     %
     \vspace{1cm}
     \column{.4\textwidth}
         \vspace{-1cm}
-        \includegraphics[width=\textwidth]{fig/limitCircle.png}   
+        \includegraphics[width=\textwidth]{fig/van.jpg} 
+        \newline fig:limit cycle  
     \end{columns}
 \end{frame}
 
