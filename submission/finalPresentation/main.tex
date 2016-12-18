@@ -1,6 +1,5 @@
+\pdfminorversion=4
 \documentclass[xcolor=table]{beamer}
-\usepackage{amsmath}
-%\usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{pdflscape}
 \usepackage{float}
@@ -35,19 +34,13 @@
 \begin{frame}{Content}
     \begin{itemize}
         \item About Lip-reading
-        \item Automatic Lip-reading and its application
-        \item General approach and challenges
+        \item General approach and challenge
         \item Experimental setup and database
         \item Baseline architecture
         \item Our approach
         \item Result 
         \item Conclusion 
     \end{itemize}
-    \vspace{0.5cm}
-    \begin{columns}[T]
-    \column{.5\textwidth}
-    \column{.5\textwidth}
-    \end{columns}
 \end{frame}
 
 \begin{frame}{About Lip-reading}
@@ -115,6 +108,8 @@
             \item Mouth shape 
             \item Visual pronunciation  
         \end{itemize}
+    \end{itemize}
+    \begin{itemize}
         \item Recording dependencies 
         \begin{itemize}
             \item Change in illumination 
@@ -188,7 +183,7 @@
     \column{.65\textwidth}
         \begin{itemize}
             \item Lip-reading challenge (MLAC 2016)%\footnote{http://ouluvs2.cse.oulu.fi/ACCVE.html} (MLAC 2016)
-            \item OuluVS2 database\cite{Anina2015} 
+            \item OuluVS2 database
         \end{itemize}
         \begin{itemize}
             \item Recording
@@ -224,7 +219,7 @@
 
 \begin{frame}{Baseline}
     \begin{itemize}
-        \item End-to-End neural network
+        \item State-of-the-art performance (MLAC 2016)
         \item Visual model: Convolutional Neural Network (CNN)
         \item Temporal model: Long Short-Term Memory (LSTM)
         \item Classifier: Support Vector Machine (SVM)
@@ -238,8 +233,8 @@
     \begin{itemize}
         \item Experiment with different architecture
         \begin{itemize}
-            \item 3 visual models 
-            \item 2 temporal models
+            \item 1 visual models 
+            \item 4 temporal models
             \item 1 Classifier
         \end{itemize}
     \end{itemize}
@@ -249,89 +244,103 @@
 \end{frame}
 
 \begin{frame}{Visual Models}
-    \begin{columns}[T]
-    \column{.5\textwidth}
     \begin{itemize}
-        \item CNN-baseline
+        \item CNN
         \begin{figure}
-        \includegraphics[width=.9\textwidth]{fig/cnnOriginal.jpg}   
+        \includegraphics[width=.6\textwidth]{fig/cnnOriginal.jpg}   
         \end{figure}
     \end{itemize}
-    \column{.5\textwidth}
-    \begin{itemize}
-        \item Alex-net 
-        \begin{figure}
-        \includegraphics[width=.9\textwidth]{fig/alexNet.jpg}   
-        \end{figure}
-    \end{itemize}
-    \end{columns}
-    %
-    \begin{columns}[T]
-    \column{\textwidth}
-    \begin{itemize}
-        \item Optical Flow 
-        \begin{columns}[T]
-            \column{.25\textwidth}
-            \begin{figure}
-            \includegraphics[width=\textwidth]{fig/opti0.jpeg}   
-            \end{figure}
-            \column{.25\textwidth}
-            \begin{figure}
-            \includegraphics[width=\textwidth]{fig/opti1.jpeg}   
-            \end{figure}
-            \column{.25\textwidth}
-            \begin{figure}
-            \includegraphics[width=\textwidth]{fig/opti.jpeg}   
-            \end{figure}
-        \end{columns}
-    \end{itemize}
-    \column{.0\textwidth}
-    \end{columns}
 \end{frame}
+
+%\begin{frame}{Visual Models}
+%    \begin{columns}[T]
+%    \column{.5\textwidth}
+%    \begin{itemize}
+%        \item CNN-baseline
+%        \begin{figure}
+%        \includegraphics[width=.9\textwidth]{fig/cnnOriginal.jpg}   
+%        \end{figure}
+%    \end{itemize}
+%    \column{.5\textwidth}
+%    \begin{itemize}
+%        \item 
+%        \begin{figure}
+%        \includegraphics[width=.9\textwidth]{fig/alexNet.jpg}   
+%        \end{figure}
+%    \end{itemize}
+%    \end{columns}
+%    %
+%    \begin{columns}[T]
+%    \column{\textwidth}
+%    \begin{itemize}
+%        \item Optical Flow 
+%        \begin{columns}[T]
+%            \column{.25\textwidth}
+%            \begin{figure}
+%            \includegraphics[width=\textwidth]{fig/opti0.jpeg}   
+%            \end{figure}
+%            \column{.25\textwidth}
+%            \begin{figure}
+%            \includegraphics[width=\textwidth]{fig/opti1.jpeg}   
+%            \end{figure}
+%            \column{.25\textwidth}
+%            \begin{figure}
+%            \includegraphics[width=\textwidth]{fig/opti.jpeg}   
+%            \end{figure}
+%        \end{columns}
+%    \end{itemize}
+%    \column{.0\textwidth}
+%    \end{columns}
+%\end{frame}
 
 \begin{frame}{Temporal Models}
+    \begin{columns}
+    \column{.6\textwidth}
     \begin{itemize}
-        \item Long Short-Term Memory 
-        \begin{figure}
-            \includegraphics[width=.3\textwidth]{fig/lstm.png}   
-        \end{figure}
+        \item Long Short-Term Memory (LSTM)
     \end{itemize}
+    \vspace{-.5cm}
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{fig/lstm.png}   
+    \end{figure}
+    \vspace{-.5cm}
     \begin{itemize}
-        \item Bidirectional Long Short-Term memory 
-        \begin{figure}
-            \includegraphics[width=.4\textwidth]{fig/biLstm.png}   
-        \end{figure}
+        \item Bidirectional LSTM 
     \end{itemize}
+    \vspace{-.5cm}
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{fig/biLstm.png}   
+    \end{figure}
+    \column{.4\textwidth}
+    \begin{itemize}
+        \item Batch-Norm 
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=\textwidth]{fig/batchNorm}   
+    \end{figure}
+    \end{columns}
 \end{frame}
 
+
 \begin{frame}{Architectures}
-    \begin{columns}[T]
-    \column{0.5\textwidth}
     \begin{itemize}
-        \item 5 architecture is evaluated
+        \item 3 new architecture is evaluated
     \end{itemize}
-    \column{0.5\textwidth}\vspace{-0.7cm}
+    %
+    \begin{center}
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiBase.pdf}
+    \end{figure}\pause
+    \begin{figure}
+        \includegraphics[height=1.3cm]{fig/archiBatchNormLstm.pdf}
+    \end{figure}\pause
     \begin{figure}
         \includegraphics[height=1.3cm]{fig/archiCnnBiLstm.pdf}
-    \end{figure}\pause
-    \end{columns}
-    %
-    \begin{columns}[T]
-    \column{0.5\textwidth}
+    \end{figure}\vspace{-0.3cm}\pause
     \begin{figure}
-        \includegraphics[height=1.3cm]{fig/archiAlexLstm.pdf}   
-    \end{figure}\vspace{-1.2cm}\pause
-    \column{0.5\textwidth}
-    \begin{figure}
-        \includegraphics[height=1.3cm]{fig/archiAlexBiLstm.pdf}   
-    \end{figure}\pause
-    \end{columns}
-    \begin{figure}
-        \includegraphics[height=1.3cm]{fig/archiOptiLstm.pdf}   
-    \end{figure}\vspace{-.5cm}\pause
-    \begin{figure}
-        \includegraphics[height=1.3cm]{fig/archiOptiBiLstm.pdf}   
+        \includegraphics[height=1.3cm]{fig/archiBatchNormBiLstm.pdf}
     \end{figure}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Results Single-View}
@@ -341,11 +350,9 @@
     \begin{figure}
         \begin{overprint}[\textwidth]
             \onslide<1>\hfill\includegraphics[height=1.5cm]{fig/archiBase.pdf}   
-            \onslide<2>\hfill\includegraphics[height=1.5cm]{fig/archiCnnBiLstm.pdf}   
-            \onslide<3>\hfill\includegraphics[height=1.5cm]{fig/archiAlexLstm.pdf}   
-            \onslide<4>\hfill\includegraphics[height=1.5cm]{fig/archiAlexBiLstm.pdf}   
-            \onslide<5>\hfill\includegraphics[height=1.5cm]{fig/archiOptiLstm.pdf}   
-            \onslide<6>\hfill\includegraphics[height=1.5cm]{fig/archiOptiBiLstm.pdf}   
+            \onslide<2>\hfill\includegraphics[height=1.5cm]{fig/archiBatchNormLstm.pdf}   
+            \onslide<3>\hfill\includegraphics[height=1.5cm]{fig/archiCnnBiLstm.pdf}   
+            \onslide<4>\hfill\includegraphics[height=1.5cm]{fig/archiBatchNormBiLstm.pdf}   
         \end{overprint}
     \end{figure}
     \vspace{-.1cm}
@@ -355,33 +362,27 @@
     \makebox[\linewidth][c]{%
     \begin{minipage}{1.1\textwidth}
     \begin{center}
-    \begin{tabular}{cc|ccccccc}
+    \begin{tabular}{cc|cccccc}
         \rowcolor{Header}
         \multicolumn{2}{c|}{Architecture} &%
-        \multicolumn{6}{c}{View} &\\ 
+        \multicolumn{5}{c}{View} &\\ 
         \rowcolor{Header}
         Visual  & Temporal %
-        & 0& 30 & 45 & 60 & 90 & Avg & Multi\\\hline\hline
+        & 0& 30 & 45 & 60 & 90 & Avg \\\hline\hline
         %
         %
-        CNN-base & LSTM % 
-        &81.1 &80.0 &76.9 &69.2 &82.2 &77.9 & 80.0\pause \\\hline
+        CNN & LSTM % 
+        &81.1 &80.0 &76.9 &69.2 &82.2 &77.9\pause \\\hline
         %
         \rowcolor{Even}
-        CNN-base & biLSTM % 
-        &81.1 &80.0 & 83.9\imp & 75.8\imp & 82.5\imp & 80.66\imp  & 81.1\imp\pause \\\hline
-        \rowcolor{AlexNet}
-        Alex-net & LSTM % 
-        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
-        \rowcolor{AlexNet}
-        Alex-net & biLSTM % 
-        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
-        \rowcolor{Opti}
-        Opti & LSTM % 
-        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\pause \\\hline
-        \rowcolor{Opti}
-        Opti & biLSTM % 
-        &80.0 &80.0 & 80.0 & 80.0 & 80.0 & 80.0 & 80.0\\\hline
+        CNN & LSTM+BN % 
+        &80.6 &77.8 & \imp{78.6}& \imp{74.0}& 72.8& 76.7\pause \\\hline
+        \rowcolor{Odd}
+        CNN & biLSTM % 
+        &81.1 &80.0 & \imp{83.9} & \imp{75.8} & \imp{82.5} & \imp{80.7}\pause \\\hline
+        \rowcolor{Even}
+        CNN & biLSTM+BN % 
+        &\imp{84.7} & \imp{81.4} & \imp{82.8} & \imp{77.0} & 81.1& \imp{81.4}\\\hline
     \end{tabular}
     \end{center}
     \end{minipage}%
@@ -407,23 +408,17 @@
         Visual  & Temporal & Multi-View \\\hline\hline
         %
         %
-        CNN-base & LSTM % 
+        CNN & LSTM % 
         & 80.0\\
         \rowcolor{Even}
-        CNN-base & biLSTM % 
-        & 81.1\\
-        \rowcolor{AlexNet}
-        Alex-net & LSTM % 
-        & 80.0\\
-        \rowcolor{AlexNet}
-        Alex-net & biLSTM % 
-        & 80.0\\
-        \rowcolor{Opti}
-        Opti & LSTM % 
-        & 80.0\\
-        \rowcolor{Opti}
-        Opti & biLSTM % 
-        & 80.0\\
+        CNN & LSTM+BN % 
+        & \imp{82.2}\\
+        \rowcolor{Odd}
+        CNN & biLSTM % 
+        & \imp{81.1}\\
+        \rowcolor{Even}
+        CNN & biLSTM+BN % 
+        & \imp{88.1}\\
     \end{tabular}
     \end{center}
 \end{frame}
@@ -448,11 +443,14 @@
         %
         %
         \multicolumn{2}{c|}{Baseline}%
-        & 80.0 & 82.1\imp\\\hline
+        & 80.0 & \imp{82.1}\\\hline
         %
         \rowcolor{Even}
-        CNN-base & biLSTM % 
-        & 81.1 & 81.9\imp\\\hline
+        CNN& biLSTM % 
+        & 81.1 & \imp{81.9}\\\hline
+        \rowcolor{Odd}
+        CNN& biLSTM+BN % 
+        & 88.1 & \imp{88.9}\\\hline
     \end{tabular}
     \end{center}
 \end{frame}
@@ -480,33 +478,41 @@
 
 \begin{frame}{Conclusion}
     \begin{itemize}
-        \item 5 different Auto lip-reading architectures is evaluated\pause
+        \item 3 different Auto lip-reading architectures is evaluated\pause
         \item 2 experimental setup: \textit{single-view} and \textit{multi-view}\pause
-        \item Best prformance: CNN combined with a bidirectional-LSTM
+        \item Best performance: CNN combined with a bidirectional-LSTM and batch norm
         \begin{center}
         \begin{tabular}{c|cc}
             \rowcolor{Header}
             Architecture & Single-view Avg & Multi-view\\\hline
             %
             Baseline & 77.9 & 80.0\\
-            CNN+biLSTM & 80.7 & 81.1\\
+            CNN+biLSTM+BN & \imp{81.4}  & \imp{88.1}\\
         \end{tabular}
         \end{center}\pause
-        \item Adjacent views can be used for augmenting training data.\pause
+        \item Adjacent views can be used for augmenting training data in multi-view.\pause
         \begin{center}
         \begin{tabular}{c|cc}
             \rowcolor{Header}
-            Architecture & Multi-view & Augmented\\\hline
+            Architecture & Non-augmented & Augmented\\\hline
             %
-            Baseline & 80.0 & 82.1\\
-            CNN+biLSTM & 81.1 & 81.9\\
+            Baseline & 80.0 & \imp{82.1}\\
+            CNN+biLSTM+BN & 88.1 & \imp{88.9}\\
         \end{tabular}
         \end{center}
     \end{itemize}
 \end{frame}
 
-\bibliographystyle{plain}
- %argument is your BibTeX string definitions and bibliography database(s)
-\bibliography{tmp,mendeley}
+\begin{frame}
+\begin{center}
+    {\Huge\color[rgb]{0.2,0.2,0.7}%
+    Questions?%
+    }
+\end{center}
+\end{frame}
+
+%\bibliographystyle{plain}
+% %argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{tmp,mendeley}
 
 \end{document}
