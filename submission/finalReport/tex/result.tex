@@ -37,6 +37,7 @@ The table \ref{tab:singletb} shows results of various application of Bi-directio
 \end{table}
 
 \subsubsection{Bi-directional LSTM}
+After applying the Bi-directional LSTM, it has increased for 45, 60 and 90 degree of view. But for the frontal and 30 degree of view, the baseline has better performance than applying the Bi-directional LSTM case. However we can take the another algorithm for each view, so it is also meaningful results.
 \subsubsection{Batch Normalization}
 Adding Batch Norm layer after LSTM was effective but not as Bi-LSTM. It	has incresed only for 45 and 60 degree of view. Besides, it even degregated the accuracy harshly on profile view. However, combination of Bi-LSTM and Batch Normalization boost the performance of overall view compare to only BN application and also compare to baseline except profile view. 	
 
