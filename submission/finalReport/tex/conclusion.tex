@@ -1,2 +1,23 @@
 \section{Conclusion}
-The conclusion goes here.
+In this paper a new architecture for automatic lip-reading have been proposed.
+The architecture consist of three new elements:
+1) To use a bi-directional LSTM for the temporal model, 
+2) The usage of batch-norm between the temporal model and the classification, and
+3) data argumentation of a multi-view setup.
+The architecture have been evaluated on both a single-view and multi-view setup.
+In the multi-view setup different 4 different architecture have been evaluated.
+For the proposed architecture a better performance is obtained, in comparison to the state-of-the-art architecture.
+For single-view an average performance of 81.4\% is obtained.
+This performance is 3.4\% better then the current state-of-the-art, of 77.9\%. 
+The proposed architecture further have a better performance on each of the individual views, beside 90 degrees.
+An architecture where batch-norm and bi-directional LSTM were used individually were also evaluated in this paper.
+A decrease in the average performance were here observed when batch-norm were used alone.
+For the bi-LSTM with no batch-norm an increasing performance were here observed.
+The best performance could however be observed when the bi-LSTM and batch-norm were combined.
+For the multi-view setup, the best performance were obtained by the use of a merge images architecture.
+A performance of 90\% accuracy is here obtained.
+This performance is 10\% better then the current state-of-the-art on 80\%.
+Architectures where the batch-norm and bi-LSTM were used on its own where here also evaluated.
+A better or equal performance where here observed, where the best performance gain where obtained with the combination of the two.
+Augmentation of the training data where here also evaluated on each of the implementations.
+The same or better performance where here obtained, with a significant performance increase for the combined architecture with batch-norm and bi-LSTM.
