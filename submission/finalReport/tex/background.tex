@@ -29,7 +29,12 @@ $$\mathbf h_t=\tanh\left(c_t\right)\circ \mathbf o_t$$
 
 where $\mathbf{W}^i, \mathbf{W}^f, \mathbf{W}^o, \mathbf{W}^c \in \mathbb{R}^{N \times N}$, $\mathbf{U}^i, \mathbf{U}^f, \mathbf{U}^o, \mathbf{U}^c \in \mathbb{R}^{N \times N}$ are weight matrices, $\mathbf h_t$ is output vector and $i, f$ and $o$ represent input ($i$), forget ($f$) and output ($o$) gates.
 
+\subsection{Bi-directional LSTM}
+
+The object by using LSTM is to predict state of current time step with previous history. To consider the previous time steps is helpful to improve the performance. However, in the analysis of sequential data, the state of next time step is also important data for predicting the current state. For example, let’s think about the sentence. In the sentence, we know that noun can be located after the adjective or article. The other way, we know that the adjective and article can be located before the noun. Likewise, in the lip reading task, the important thing for analysis of current time step is not only the previous shape of mouth but also next shape of mouth. Thus we applied the bi-directional LSTM for considering the forward and backward sequence. 
+
 We are planning to apply the bi-directional LSTM, which considers the both directional(forward and backward) sequence of data. There are some reseach about outperforming result of bi-directional LSTM(\cite{BiLSTM}). 
+
 
 
 \subsection{Optical Flow}

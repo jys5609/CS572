@@ -8,6 +8,9 @@ The particular architectures which we like to evaluate is then presented.
 \subsection{Single-View Lip-Reading}
 
 \subsubsection{Bi-directional LSTM}
+We consider the directional sequence with applying bi-directional LSTM. We put the backward LSTM layer on the output of the forward LSTM. Now we can consider the history of the previous and next data.
+
+
 
 \subsubsection{Batch Normalization}
 We additionally put Batch Nromalization layer on the output of the LSTM or bi-LSTM. Unlike BN after CNN, normalization is done on feature-wise method, which is each feature map in the input will be normalized separately, but using per-batch statistics to normalize the data during both testing and training.
