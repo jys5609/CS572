@@ -2,7 +2,7 @@
 \section{Experiment and Result}
 
 \subsection{Single-View Lip-Reading}
-
+The table \ref{tab:singletb} shows results of various application of Bi-directional LSTM and Batch Normalization on single-view lip reading. 
 
 \begin{table}[h]
 \centering
@@ -38,12 +38,12 @@
 
 \subsubsection{Bi-directional LSTM}
 \subsubsection{Batch Normalization}
-
+Adding Batch Norm layer after LSTM was effective but not as Bi-LSTM. It	has incresed only for 45 and 60 degree of view. Besides, it even degregated the accuracy harshly on profile view. However, combination of Bi-LSTM and Batch Normalization boost the performance of overall view compare to only BN application and also compare to baseline except profile view. 	
 
 
 \subsection{Multi-View Lip-Reading}
 \subsubsection{Visual Model Architecture}
-
+The table \ref{tab:multitb} shows similar application of Bi-directional LSTM and Batch Normalization on four different visual model. 
 \begin{table}[h]
 \centering
     \begin{tabular}{c|cccc}
@@ -79,6 +79,7 @@
 
 
 \subsubsection{Data-Augmentation}
+We implemented data-augmentation as explained in method part, and the impact of data-augmentation explicitly proves its effectiveness, as it finally perform the best in three combination of bi-LSTM, Batch Normalization and data-augmentation.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|cccc}
@@ -87,7 +88,7 @@
 		Model&%  & BN & Data-Augment &%
 		3D-CNN & MC & MI & MF \\\hline
 		%
-		Data- Augment%\multirow{2}{*}{CNN+key}%
+		Data-Augment%\multirow{2}{*}{CNN+key}%
 		& %LSTM% & \multirow{2}{*}{SVM} &%
 		77.29 & 79.36& 82.12& 81.25\\
 		%& %biLSTM %& &%
@@ -118,9 +119,10 @@
 	\centering
 	\includegraphics[width=0.48\columnwidth]{fig/multi80MI.png}
 	\includegraphics[width=0.5\columnwidth]{fig/multi90MI.png}
-	\caption{confusion Matrix of Merge Image architencture. The left image is for BaseLine(Accuracy of 80\%) and the right image is for Bi-LSTM+BN with Data Augmentation model(Accuracy of 90\%).  x-axis is predicted label and y-axis is true labels.}
+	\caption{Confusion Matrix of Merge Image architencture. The left image is for BaseLine(Accuracy of 80\%) and the right image is for Bi-LSTM+BN with Data Augmentation model(Accuracy of 90\%).  x-axis is predicted label and y-axis is true labels.}
 	\label{fig:multi80MI}
 \end{figure}
+There is difference in accuracy of 10 percentage between baseline multi-view Merge Image visual model, and its extension of bi-directional LSTM, batch-normailzation and data augmentation. We can that difficulties on 'Excues me' had eased and the other confusions. However, there still have slight difficulties on 'Excuse me' to 'I am sorry' and 'Thank you' to 'Hello', which can be seen as confusion of pronouncation similaities.
 %\begin{figure}[h]
 %	\centering
 %	\includegraphics[width=0.5\columnwidth]{fig/multi90MI.png}
