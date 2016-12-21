@@ -2,9 +2,10 @@
 % in the abstract
 \begin{abstract}
 Auto lip-reading (ALR) is a promising method for enhancing speech recognition, by combining the audio input with a visual.
-ALR is usually composed by a feature extraction part and a classification part.
+ALR architectures is usually composed of three parts, feature extraction, temporal correlation of the features and classification.
 The feature extraction part is here often complicated by large variety in mouth shape and visual pronunciation. 
-In this work we evaluate the usage of a combined method of the classical approach to ALR where handcrafted feature extraction is used, with the more modern approach where end-to-end neural network is used.
-In particular we investigate the usage of optical flow and key feature extraction in combination with neural networks, such as convolutional networks and Long short-term memory.
-The performance of each of these systems is compared to the current state-of-the-art architecture.
+In this work we propose a new architecture for ALR, together with a way for augmenting the training data of a multi-view setting.
+The architecture is then evaluated in a single-view and multi-view setting. 
+With the proposed architecture an accuracy of 81.4\% for an single-view setting and 90.0\% for a multi-view, is obtained.
+Both of these is outperforming the current state-of-the-art architecture with 3.4\% and 10\% respectively.
 \end{abstract}

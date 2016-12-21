@@ -26,6 +26,17 @@ Better performing systems is later obtained by the use of neural networks, where
 In \cite{Ngiam2011} a deep autoencoder is used for the feature extraction and a long short-term memory (LSTM) is used in \cite{Wand2016} to make a temporal time correlation of the features.
 In \cite{Lee} the combination of a convolutional neural network with a LSTM is presented and is the current state-of-the-art architecture.
 
-In this work we propose a combined solution between the classical approach and the neural network approach, by using techniques from the classical approach for the feature extraction in combination with a CNN and LSTM.
-We limit our scope to focus on speaker independent and with single-view, cross-view and multi-view setting, where we use the OuluVS2 database\cite{Anina2015} to evaluate our design, in relation to the error rate of word or phrase classification.
+In this work we propose a new architecture for ALR, consisting a three new parts.
+1) For the architecture we propose the use of a bi-directional long short-term memory for the temporal model.
+2) We here further suggest to use a batch-norm between the temporal model and classifier.
+3) For a multi-view setting a method for data augmentation of the training data is also proposed.
+%In this work we propose a combined solution between the classical approach and the neural network approach, by using techniques from the classical approach for the feature extraction in combination with a CNN and LSTM.
+We limit our scope to focus on speaker independent with a single-view and multi-view setting.
+The OuluVS2 database\cite{Anina2015} is here used for the evaluate of our design.
+The design is here evaluated in relation to the error rate of phrase classification.
 This task is related to the challenges given at the ACCV 2016 workshop, multi-view lip-reading/audio-visual challenge\footnote{http://ouluvs2.cse.oulu.fi/ACCVE.html} (MLAC 2016).
+With our proposed architecture we obtain a better performance then the current state-of-the-art.
+Our architecture here outperform the state-of-the-art architecture in both single-view as well as multi-view. 
+A performance of 81.4\% is obtained for the single-view setting, in comparison to 77.9\% for the current state-of-the-art.
+For a multi-view setting our architecture obtain a performance of 90.0\%.
+This performance is 10\% better then the one obtained for the current state-of-the-art.
