@@ -33,11 +33,15 @@ where $\mathbf{W}^i, \mathbf{W}^f, \mathbf{W}^o, \mathbf{W}^c \in \mathbb{R}^{N 
 
 The object by using LSTM is to predict state of current time step with previous history. To consider the previous time steps is helpful to improve the performance. However, in the analysis of sequential data, the state of next time step is also important data for predicting the current state. For example, let’s think about the sentence. In the sentence, we know that noun can be located after the adjective or article. The other way, we know that the adjective and article can be located before the noun. Likewise, in the lip reading task, the important thing for analysis of current time step is not only the previous shape of mouth but also next shape of mouth. Thus we applied the bi-directional LSTM for considering the forward and backward sequence. 
 
+
 We are planning to apply the bi-directional LSTM, which considers the both directional(forward and backward) sequence of data. There are some reseach about outperforming result of bi-directional LSTM(\cite{BiLSTM}). 
 
 
+\subsection{Batch Normalization}
+Neural network is usually trained with mini-batches. Batch Normalization performs normalizing, scaling and shifting the values of mini-batch. The overall algorithm is following: Batch Normalization has two kind of input. One is values of $x$ over a mini-batch: $B = {x_1,x_2,\dots,x_m};$, and the other is parameters to be learned: $\gamma, \beta$. It's output has following equations ${y_i = BN_{\gamma,\beta}(x_i)}$\\
+$$ \mu_B \leftarrow \frac{1}{m}\sum_{i=1}^{m}x_i   \quad   \sigma^2_B \leftarrow \frac{1}{m}\sum_{i=1}^{m}(x_i-\mu_B)^2$$
+$$\hat{x_i} \leftarrow \frac{x_i - \mu_B}{\sqrt{\sigma^2_B + \epsilon}}$$
+$$y_i \leftarrow \gamma\hat{x_i} + \beta $$
 
-\subsection{Optical Flow}
 
-Optical flow estimation is one of the key problems in the computer vision. In the previous approaches, Horn and Schunk suggest the original optical flow(\cite{Horn1993}). After the original optical flow, many improvements are suggested as variational model optical flow. In our approach, we are planning to apply the optical flow to feature extraction. Optical flow represents the characteristic and it can be used as a featuer of the specific part in the image.
 
